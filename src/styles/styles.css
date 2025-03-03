@@ -29,6 +29,10 @@ header {
     flex-grow: 1;
 }
 
+.site-nav .bar-icon {
+    display: none;
+}
+
 .site-nav ul {
     display: flex;
     justify-content: end;
@@ -51,6 +55,7 @@ header {
         box-shadow: none;
         padding: 0;
         gap: 0;
+        position: relative;
     }
 
     header h1 {
@@ -62,6 +67,21 @@ header {
 
     .site-nav {
         width: 100%;
+    }
+
+    .site-nav .bar-icon {
+        color: cornflowerblue;
+        display: block;
+        position: absolute;
+        top: calc(-57px + 50%);
+        right: 1em;
+        padding: 0.2em 0.4em;
+        border: 1px solid cornflowerblue;
+        border-radius: 0.2em;
+    }
+
+    .site-nav .bar-icon:hover {
+        cursor: pointer;
     }
 
     .site-nav ul {
