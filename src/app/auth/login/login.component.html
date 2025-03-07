@@ -1,1 +1,22 @@
-<p>login works!</p>
+<section class="login-container">
+
+    <h1 class="title">Вход в профила</h1>
+
+    <form #userProfile="ngForm" (ngSubmit)="handleSubmit(userProfile)">
+        <div class="field">
+            <input type="email" id="username" name="username" ngModel />
+            <label for="username">Имейл</label>
+        </div>
+        <div class="field">
+            <input type="password" id="password" name="password" ngModel />
+            <label for="password">Парола</label>
+        </div>
+
+        <button type="submit" class="btn-primary">Вход</button>
+    </form>
+
+    <footer>
+        <p>Нямате акаунт? Регистрирайте се <a routerLink="/register">тук</a>.</p>
+    </footer>
+    
+</section>

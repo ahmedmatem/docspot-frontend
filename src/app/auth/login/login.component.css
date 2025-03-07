@@ -1,0 +1,61 @@
+.login-container{
+    width: 100vw;
+    max-width: 35ch;
+    margin: 2em auto;
+    padding: 1.8em 1.3em;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0.3em;
+    box-shadow: 0 0 0.2em rgb(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container .title {
+    color: cornflowerblue;
+    letter-spacing: 0.1em;
+}
+
+.login-container form {
+    width: 100%;
+    padding: 1.5em 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container form .field {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1em;
+}
+
+.login-container form .field label {
+    order: -1;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+    border: 1px solid #bcbcbc;
+    border-radius: 0.2em;
+}
+
+.login-container form button {
+    color: #efefef;
+    padding: 0.5em 1em;
+    margin-top: 1em;
+    border: none;
+    border-radius: 0.2em;
+    font-weight: 700;
+}
+
+.login-container footer {
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.login-container footer a{
+    color: cornflowerblue;
+    text-decoration: none;
+}
