@@ -27,7 +27,7 @@
 .login-container form .field {
     display: flex;
     flex-direction: column;
-    padding-bottom: 1em;
+    padding-bottom: 0.7em;
 }
 
 .login-container form .field label {
@@ -48,6 +48,10 @@ input[type='password'] {
     border: none;
     border-radius: 0.2em;
     font-weight: 700;
+}
+
+.login-container form button:disabled {
+    opacity: 0.8;
 }
 
 .login-container footer {

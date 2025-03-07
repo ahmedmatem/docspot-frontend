@@ -4,15 +4,15 @@
 
     <form #userProfile="ngForm" (ngSubmit)="handleSubmit(userProfile)">
         <div class="field">
-            <input type="email" id="username" name="username" ngModel />
+            <input type="email" id="username" name="username" ngModel required email />
             <label for="username">Имейл</label>
         </div>
         <div class="field">
-            <input type="password" id="password" name="password" ngModel />
+            <input type="password" id="password" name="password" ngModel required />
             <label for="password">Парола</label>
         </div>
 
-        <button type="submit" class="btn-primary">Вход</button>
+        <button type="submit" [disabled]="userProfile.invalid" class="btn-primary">Вход</button>
     </form>
 
     <footer>
