@@ -34,6 +34,11 @@
     order: -1;
 }
 
+.login-container form .field span.error {
+    color:red;
+    font-size: 0.8em;
+}
+
 input[type='text'],
 input[type='email'],
 input[type='password'] {

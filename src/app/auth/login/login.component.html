@@ -4,12 +4,23 @@
 
     <form #userProfile="ngForm" (ngSubmit)="handleSubmit(userProfile)">
         <div class="field">
-            <input type="email" id="username" name="username" ngModel required email />
+            <input type="email" id="username" name="username" #emailRef="ngModel" ngModel required email />
             <label for="username">Имейл</label>
+            @if(emailRef.invalid && emailRef.touched){
+                @if(emailRef.errors?.['required']){
+                    <span class="error">Имейлът е задължителен</span>
+                } @else if (emailRef.errors?.['email']) {
+                    <span class="error">Невалиден имейл адрес</span>
+                }
+            }
         </div>
+
         <div class="field">
-            <input type="password" id="password" name="password" ngModel required />
+            <input type="password" id="password" name="password" #passRef="ngModel" ngModel required />
             <label for="password">Парола</label>
+            @if(passRef.invalid && passRef.touched){
+                <span class="error">Паролата е задължителна</span>
+            }
         </div>
 
         <button type="submit" [disabled]="userProfile.invalid" class="btn-primary">Вход</button>

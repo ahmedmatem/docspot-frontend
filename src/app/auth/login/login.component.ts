@@ -14,5 +14,10 @@ export class LoginComponent {
 
   handleSubmit(form: any){
     console.log(form.value.username);
+    if(form.valid){
+      console.log('valid');
+    } else {
+      console.log('invalid');
+    }
   }
 }
