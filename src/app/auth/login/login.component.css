@@ -14,6 +14,7 @@
 
 .login-container .title {
     color: cornflowerblue;
+    font-size: 1.2em;
     letter-spacing: 0.1em;
 }
 
@@ -53,6 +54,8 @@ input[type='password'] {
     border: none;
     border-radius: 0.2em;
     font-weight: 700;
+    align-self: center;
+    width: 50%;
 }
 
 .login-container form button:disabled {
@@ -68,3 +71,12 @@ input[type='password'] {
     color: cornflowerblue;
     text-decoration: none;
 }
+
+.error-box {
+    margin-top: 1rem;
+    color: #b00020;
+    background: #ffe5e5;
+    padding: 1rem;
+    border-radius: 0.1em;
+    box-shadow: 0 0 0.2em rgb(255, 0, 0, 0.7);
+  }

@@ -2,7 +2,11 @@
 
     <h1 class="title">Вход в профила</h1>
 
-    <form #userProfile="ngForm" (ngSubmit)="handleSubmit(userProfile)">
+    @if(loginError){
+        <div class="error-box">{{ loginError }}</div>
+    }
+
+    <form #userProfile="ngForm" (ngSubmit)="handleLogin(userProfile)">
         <div class="field">
             <input type="email" id="username" name="username" #emailRef="ngModel" ngModel required email />
             <label for="username">Имейл</label>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { LoginRequest } from '../../../types/auth.types';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +11,27 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  username = '';
-  password = '';
+  loginError: string | null = null;
 
-  handleSubmit(form: any){
-    console.log(form.value.username);
+  constructor(private router: Router, private authService: AuthService){}
+
+  async handleLogin(form: any){
     if(form.valid){
-      console.log('valid');
+      const credentials: LoginRequest = {
+        email: form.value.username,
+        password: form.value.password
+      };
+      
+      try{
+        const userData = await this.authService.login(credentials)
+        console.log('Token:', userData.token);
+        this.router.navigate(['/'])
+      } catch(err: any){
+        this.loginError = 'Невалиден имейл или парола.';
+        console.error(err.message); // 'Login failed:'
+      }
     } else {
-      console.log('invalid');
+      console.log('Invalid form data');
     }
   }
 }
