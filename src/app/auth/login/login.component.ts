@@ -23,9 +23,9 @@ export class LoginComponent {
       };
       
       try{
-        const userData = await this.authService.login(credentials)
+        const userData = await this.authService.login(credentials);
         console.log('Token:', userData.token);
-        this.router.navigate(['/'])
+        this.router.navigate(['/admin/']);
       } catch(err: any){
         this.loginError = 'Невалиден имейл или парола.';
         console.error(err.message); // 'Login failed:'
