@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { LoginRequest } from '../../../types/auth.types';
+import { JwtPayLoadFriendly, LoginRequest } from '../auth.types';
+import { getDecodedToken } from '../token.utils';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +24,11 @@ export class LoginComponent {
       };
       
       try{
-        const userData = await this.authService.login(credentials);
-        console.log('Token:', userData.token);
+        await this.authService.login(credentials);        
+        const tokenFriendly: JwtPayLoadFriendly | null = getDecodedToken();
+        if(tokenFriendly){
+          console.log(tokenFriendly);
+        }
         this.router.navigate(['/admin/']);
       } catch(err: any){
         this.loginError = 'Невалиден имейл или парола.';

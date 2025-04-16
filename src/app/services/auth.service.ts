@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_ENDPOINTS } from '../constants';
-import { LoginRequest } from '../../types/auth.types';
+import { LoginRequest } from '../auth/auth.types';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class AuthService {
 
       let token = await response.json()
 
-      localStorage.setItem('token', token);
+      localStorage.setItem('token', JSON.stringify(token));
 
       return token;
     } catch(error: any){
