@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { JwtPayLoadFriendly, LoginRequest } from '../auth.types';
-import { getDecodedToken } from '../token.utils';
+import { decodeToken } from '../token.utils';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink, FormsModule],
+  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -24,11 +24,18 @@ export class LoginComponent {
       };
       
       try{
-        await this.authService.login(credentials);        
-        const tokenFriendly: JwtPayLoadFriendly | null = getDecodedToken();
-        if(tokenFriendly){
-          console.log(tokenFriendly);
+        const res = await this.authService.login(credentials);        
+        const tokenFriendly: JwtPayLoadFriendly | null = decodeToken(res.token);
+        const role = tokenFriendly?.role;
+
+        if(role == 'Admin'){
+          this.router.navigate(['/admin/']);
+          console.log(`User logged in as Admin ...)`);
+        } else {
+          // some other roles ...
+          console.log(`User logged in as other role ...)`);
         }
+        
         this.router.navigate(['/admin/']);
       } catch(err: any){
         this.loginError = 'Невалиден имейл или парола.';

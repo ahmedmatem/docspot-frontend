@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_ENDPOINTS } from '../constants';
-import { LoginRequest } from '../auth/auth.types';
+import { AuthUser, JwtPayLoadFriendly, LoginRequest } from '../auth/auth.types';
+import { decodeToken, getDecodedToken } from '../auth/token.utils';
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +25,24 @@ export class AuthService {
     };
 
     try {
-      const response = await fetch(API_ENDPOINTS.LOGIN, requestInit);
+      const res = await fetch(API_ENDPOINTS.LOGIN, requestInit);
 
-      if(!response.ok){
+      if(!res.ok){
         throw new Error('Login failed');
       }
 
-      let token = await response.json()
+      const token = await res.json();
 
-      localStorage.setItem('token', JSON.stringify(token));
+      const tokenFriendly: JwtPayLoadFriendly | null = decodeToken(token.token);
+      if(tokenFriendly){
+        const user: AuthUser = {
+          token: token.token,
+          role: tokenFriendly!.role,
+          name: tokenFriendly!.name
+        };
+        // save authenticated user in localstorage
+        localStorage.setItem('authUser', JSON.stringify(user))
+      };
 
       return token;
     } catch(error: any){

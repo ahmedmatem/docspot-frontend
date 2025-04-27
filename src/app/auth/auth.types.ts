@@ -20,3 +20,9 @@ export interface JwtPayLoadRaw {
     'iss': string,
     'aud': string
 }
+
+export interface AuthUser {
+    token: string,
+    role: string,
+    name: string,
+}

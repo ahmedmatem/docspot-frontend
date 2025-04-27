@@ -2,9 +2,18 @@ import { jwtDecode } from "jwt-decode";
 import { JwtPayLoadFriendly, JwtPayLoadRaw } from "./auth.types";
 
 export function getDecodedToken(): JwtPayLoadFriendly | null {
-    const token = localStorage.getItem('token');
-    if(!token) return null;
+    let authUser = localStorage.getItem('authUser');
+    if(authUser){
+        const obj = JSON.parse(authUser);
+    }
 
+    const token = localStorage.getItem('token');
+    return decodeToken(token);
+}
+
+export function decodeToken(token: string | null): JwtPayLoadFriendly | null {
+    if(!token) 
+        return null;
     try{
         const decoded = jwtDecode<JwtPayLoadRaw>(token);
 
