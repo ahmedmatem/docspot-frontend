@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { API_ENDPOINTS } from '../constants';
+import { Injectable, signal } from '@angular/core';
+import { API_ENDPOINTS, LOCAL_STORAGE_KEYS as ls_keys } from '../constants';
 import { AuthUser, JwtPayLoadFriendly, LoginRequest } from '../auth/auth.types';
 import { decodeToken, getDecodedToken } from '../auth/token.utils';
 
@@ -8,6 +8,8 @@ import { decodeToken, getDecodedToken } from '../auth/token.utils';
   providedIn: 'root'
 })
 export class AuthService {
+  isLoggedIn = signal(false);
+  user = signal<AuthUser | null>(null);
 
   constructor(private http: HttpClient) { }
 
@@ -41,7 +43,10 @@ export class AuthService {
           name: tokenFriendly!.name
         };
         // save authenticated user in localstorage
-        localStorage.setItem('authUser', JSON.stringify(user))
+        localStorage.setItem(ls_keys.AUTH_USER, JSON.stringify(user))
+
+        this.isLoggedIn.set(true);
+        this.user.set(user);
       };
 
       return token;
@@ -49,5 +54,24 @@ export class AuthService {
       console.log('Login error:', error);
       throw error;
     }
+  }
+
+  checkUserInLocalStorage(){
+    const authUser = localStorage.getItem(ls_keys.AUTH_USER);
+
+    if(authUser){
+      this.isLoggedIn.set(true);
+      const user = JSON.parse(authUser);
+      this.user.set(user);
+      // return user;
+    }
+
+    // return null;
+  }
+
+  logout() {
+    localStorage.removeItem(ls_keys.AUTH_USER);
+    this.isLoggedIn.set(false);
+    this.user.set(null);
   }
 }
