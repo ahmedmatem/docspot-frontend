@@ -73,18 +73,22 @@ input[type='password'] {
         width: 100%;
         flex-grow: 1;
         text-align: center;
-        padding: 1em 0;
+        padding: 1em 0 1.5em!important;
     }
 
     .site-nav {
+        display: flex;
+        flex-direction: column;
         width: 100%;
+        position: relative;
     }
 
     .site-nav .bar-icon {
         color: cornflowerblue;
         display: block;
         position: absolute;
-        top: calc(-57px + 50%);
+        top: calc(0% - 4em)!important;
+        /* top: -1em!important; */
         right: 1em;
         padding: 0.2em 0.4em;
         border: 1px solid cornflowerblue;
@@ -101,6 +105,21 @@ input[type='password'] {
         width: 100%;
         gap: 0;
         border-collapse: collapse;
+    }
+
+    .site-nav ul.main-menu {
+        gap: 0!important;
+    }
+
+    .site-nav ul.right-menu {
+        gap: 0!important;
+    }    
+
+    .site-nav ul.right-menu span {
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: -1.5rem;
     }
 
     .site-nav ul li {

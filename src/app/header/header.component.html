@@ -6,14 +6,42 @@
     <nav class="site-nav">
         <div class="bar-icon">
             <i class="fa-solid fa-bars"></i>
-        </div>      
-        <ul>
+        </div>
+        <ul class="main-menu">
+            @if(isLoggedIn()){
+                @if(user()?.role == roles.ADMIN){
+                    <li>
+                        <a routerLink="/register">
+                            <i class="fa-solid fa-house"></i> Начало
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/register">
+                            <i class="fa-solid fa-stethoscope"></i> Прегледи
+                        </a>
+                    </li><li>
+                        <a routerLink="/register">
+                            <i class="fa-solid fa-user-doctor"></i> Доктори
+                        </a>
+                    </li>
+                }                
+            }
+        </ul>
+        <ul class="right-menu">
             @if(!isLoggedIn()){
                 <li><a routerLink="/register">Регистрация</a></li>
-                <li><a routerLink="/login">Вход</a></li>
+                <li>
+                    <a routerLink="/login">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Вход
+                    </a>
+                </li>
             } @else {
-                <span>Здравей, {{ username()?.name }}!</span>
-                <li><a href="#" (click)="logout()">Изход</a></li>
+                <span>Здравей, {{ user()?.name }}!</span>
+                <li>
+                    <a href="#" (click)="logout()">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Изход
+                    </a>
+                </li>
             }
             
         </ul>

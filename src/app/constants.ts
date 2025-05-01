@@ -7,3 +7,8 @@ export const API_ENDPOINTS = {
 export const LOCAL_STORAGE_KEYS = {
     AUTH_USER: 'authUser'
 };
+
+export const ROLES = {
+    ADMIN: 'Admin',
+    DOCTOR: 'Doctor'
+}
