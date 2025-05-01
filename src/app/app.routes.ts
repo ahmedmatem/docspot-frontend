@@ -3,6 +3,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { DoctorsComponent } from './pages/admin/doctors/doctors.component';
+import { AppointmentsComponent } from './pages/admin/appointments/appointments.component';
 
 export const routes: Routes = [
     {
@@ -23,7 +25,9 @@ export const routes: Routes = [
     {
         path: 'admin',
         children: [
-            { path: '', component: DashboardComponent }
+            { path: '', component: DashboardComponent },
+            { path: 'appointments', component: AppointmentsComponent },
+            { path: 'doctors', component: DoctorsComponent }
         ]
     }
 ];

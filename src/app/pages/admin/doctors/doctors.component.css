@@ -1,0 +1,16 @@
+.page-header {
+    display: flex;
+    align-items: baseline;
+    padding-bottom: 1rem;
+}
+
+.page-header h2 {
+    flex-grow: 1;
+    font-size: 1.2em;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
