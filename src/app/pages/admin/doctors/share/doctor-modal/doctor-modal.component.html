@@ -1,0 +1,39 @@
+<div class="modal fade" id="doctor-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ title }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="doctor-name" class="form-label">Име</label>
+              <input type="text" 
+                class="form-control"
+                [(ngModel)]="model.name" [ngModelOptions]="{standalone: true}"
+                id="doctor-name">
+            </div>
+            <div class="mb-3">
+                <label for="doctor-name" class="form-label">Имейл</label>
+                <input type="text" 
+                  class="form-control"
+                  [(ngModel)]="model.email" [ngModelOptions]="{standalone: true}"
+                  id="doctor-name">
+              </div>
+              <div class="mb-3">
+                <label for="doctor-name" class="form-label">Парола</label>
+                <input type="text" 
+                  class="form-control"
+                  [(ngModel)]="model.password" [ngModelOptions]="{standalone: true}"
+                  id="doctor-name">
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Затвори</button>
+          <button type="button" class="btn btn-primary" (click)="save()" >Запази</button>
+        </div>
+      </div>
+    </div>
+  </div>

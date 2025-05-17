@@ -1,17 +1,22 @@
 import { HttpInterceptorFn } from "@angular/common/http";
+import { LOCAL_STORAGE_KEYS as ls_keys } from "../constants";
+import { AuthUser } from "./auth.types";
 
-export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
-    const token = localStorage.getItem('token');
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+    const authUser = localStorage.getItem(ls_keys.AUTH_USER);
+    console.log(`AuthUser -> ${authUser}`);
+    if(authUser){
+      const user: AuthUser = JSON.parse(authUser);
+      console.log('An interceptor was raised...');
 
-    console.log('An interceptor was raised...');
-
-    if(req){
+      if(req){
         req = req.clone({
             setHeaders: {
-                'Authorization': token ? `Bearer ${token}` : '',
+                'Authorization': user.token ? `Bearer ${user.token}` : '',
             },
         });
-    }    
+      }    
+    }  
 
     return next(req);
 }

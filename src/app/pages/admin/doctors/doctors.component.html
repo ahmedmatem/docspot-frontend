@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2>Всички доктори</h2>
     <div class="action-panel">
-        <button class="btn btn-outline-primary">
+        <button class="btn btn-outline-primary" (click)="add()">
             <i class="fa-solid fa-plus"></i> Добави доктор
         </button>
     </div>
@@ -14,3 +14,8 @@
     <app-doctor-card />
     <!-- Add more cards as needed -->
   </div>
+
+<!-- Modal Add a Doctor -->
+<app-doctor-modal [title]="'Добавяне на доктор'" (saveClicked)="save($event)">
+
+</app-doctor-modal>

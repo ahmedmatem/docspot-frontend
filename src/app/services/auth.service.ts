@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { API_ENDPOINTS, LOCAL_STORAGE_KEYS as ls_keys } from '../constants';
+import { API_AUTH, LOCAL_STORAGE_KEYS as ls_keys } from '../constants';
 import { AuthUser, JwtPayLoadFriendly, LoginRequest } from '../auth/auth.types';
 import { decodeToken, getDecodedToken } from '../auth/token.utils';
 
@@ -27,7 +27,7 @@ export class AuthService {
     };
 
     try {
-      const res = await fetch(API_ENDPOINTS.LOGIN, requestInit);
+      const res = await fetch(API_AUTH.LOGIN, requestInit);
 
       if(!res.ok){
         throw new Error('Login failed');

@@ -1,7 +1,11 @@
-const BASE_URL = 'https://localhost:7168';
+const BASE_URL = 'https://localhost:7168/api';
 
-export const API_ENDPOINTS = {
-    LOGIN: `${BASE_URL}/api/auth/login`
+export const API_AUTH = {
+    LOGIN: `${BASE_URL}/auth/login`
+};
+
+export const API_ADMIN = {
+    REGISTER_DOCTOR: `${BASE_URL}/admin/register-doctor`,
 };
 
 export const LOCAL_STORAGE_KEYS = {
