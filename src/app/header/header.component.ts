@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AuthUser } from '../auth/auth.types';
-import { ROLES as roles } from '../constants';
+import { AppConstants } from '../constants';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +11,12 @@ import { ROLES as roles } from '../constants';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  roles = roles;
+  roles = AppConstants.ROLES;
   isLoggedIn = signal(false);
   user = signal<AuthUser | null>(null);
 
   constructor(private authService: AuthService){
-    const user = authService.checkUserInLocalStorage();
+    // const user = authService.checkUserInLocalStorage();
     
     this.user = this.authService.user;
     this.isLoggedIn = this.authService.isLoggedIn;

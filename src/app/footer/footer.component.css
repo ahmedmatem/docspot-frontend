@@ -1,0 +1,11 @@
+footer {
+    margin-top: 2em;
+    background-color: white;
+    border-top-left-radius: 0.4em;
+    border-top-right-radius: 0.4em;
+}
+
+.section {
+    padding: 2rem;
+    text-align: center;
+}

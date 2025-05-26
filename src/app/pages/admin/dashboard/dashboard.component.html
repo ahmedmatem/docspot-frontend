@@ -1,1 +1,9 @@
 Dashboard
+@if(user != null){
+    @if(user()?.role == roles.ADMIN){
+        <p>Logged in as an ADMIN</p>
+    }
+    @else if (user()?.role == roles.DOCTOR) {
+        <p>Logged in as a DOCTOR</p>
+    }
+}

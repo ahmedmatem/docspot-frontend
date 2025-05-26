@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { API_AUTH, LOCAL_STORAGE_KEYS as ls_keys } from '../constants';
+import { AppConstants } from '../constants';
 import { AuthUser, JwtPayLoadFriendly, LoginRequest } from '../auth/auth.types';
 import { decodeToken, getDecodedToken } from '../auth/token.utils';
 
@@ -11,7 +11,16 @@ export class AuthService {
   isLoggedIn = signal(false);
   user = signal<AuthUser | null>(null);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    const savedUser = localStorage.getItem(AppConstants.LOCAL_STORAGE_KEYS.AUTH_USER);
+    if(savedUser){
+      try {
+        const authUser = JSON.parse(savedUser) as AuthUser;
+        this.user.set(authUser);
+        this.isLoggedIn.set(true);
+      } catch{}
+    }
+  }
 
   /**
    * 
@@ -27,7 +36,7 @@ export class AuthService {
     };
 
     try {
-      const res = await fetch(API_AUTH.LOGIN, requestInit);
+      const res = await fetch(AppConstants.API_ENDPOINTS.AUTH.LOGIN, requestInit);
 
       if(!res.ok){
         throw new Error('Login failed');
@@ -43,7 +52,7 @@ export class AuthService {
           name: tokenFriendly!.name
         };
         // save authenticated user in localstorage
-        localStorage.setItem(ls_keys.AUTH_USER, JSON.stringify(user))
+        localStorage.setItem(AppConstants.LOCAL_STORAGE_KEYS.AUTH_USER, JSON.stringify(user))
 
         this.isLoggedIn.set(true);
         this.user.set(user);
@@ -57,7 +66,7 @@ export class AuthService {
   }
 
   checkUserInLocalStorage(){
-    const authUser = localStorage.getItem(ls_keys.AUTH_USER);
+    const authUser = localStorage.getItem(AppConstants.LOCAL_STORAGE_KEYS.AUTH_USER);
 
     if(authUser){
       this.isLoggedIn.set(true);
@@ -70,7 +79,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem(ls_keys.AUTH_USER);
+    localStorage.removeItem(AppConstants.LOCAL_STORAGE_KEYS.AUTH_USER);
     this.isLoggedIn.set(false);
     this.user.set(null);
   }

@@ -1,17 +1,23 @@
 header {
     display: flex;
     gap: 2em;
-    padding: 0.5em 1.5em;
+    padding: 1em 1.5em;
     align-items: center;
-    border: 1px solid cornflowerblue;
+    /* border: 1px solid cornflowerblue;
     border-radius: 0.3em;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    box-shadow: 0 0 0.3em 0 rgb(0, 0, 0, 0.2);
+    box-shadow: 0 0 0.3em 0 rgb(0, 0, 0, 0.2); */
+}
+
+h1.site-title {
+    color: var(--text-primary);
+    margin: 0;
+    cursor: pointer;
 }
 
 .site-title {
-    color: cornflowerblue;
+    /* color: var(--bs-gray-400); */
     font-size: 1.3em;
 }
 
@@ -31,8 +37,7 @@ nav.site-nav {
     margin: 0;
 }
 
-.site-nav ul.main-menu {
-   
+.site-nav ul.main-menu {   
     flex-grow: 1;
     justify-content: start;
 }
@@ -46,7 +51,7 @@ nav.site-nav {
 }
 
 .site-nav ul li a {
-    color: #666;
+    /* color: #666; */
     text-decoration: none;
 }
 

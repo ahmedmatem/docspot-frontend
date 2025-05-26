@@ -1,5 +1,50 @@
+:root {
+    --width-page-max: 1300px;
+
+  --color-primary: var(--bs-primary);
+  --color-primary-light: #e8f5e9;
+  --color-accent: #2e7d32;
+  --color-bg: white;
+  --color-text: #2e2e2e;
+  --color-muted: #666;
+  --color-border: #c8e6c9;
+
+  /* Base text colors */
+  --text-primary: #1a1a1a;       /* Main readable body text */
+  --text-secondary: #555555;     /* Subtext, less prominent */
+  --text-muted: #888888;         /* Hints, placeholders, etc. */
+  --text-inverse: #ffffff;       /* For dark backgrounds */
+
+  /* Link and action */
+  --text-link: #0056b3;
+  --text-link-hover: #003d80;
+
+  /* Status / accent text */
+  --text-success: #2e7d32;
+  --text-warning: #f57c00;
+  --text-error: #d32f2f;
+  --text-info: #1976d2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #f0f0f0;
+    --text-secondary: #cccccc;
+    --text-muted: #999999;
+    --text-inverse: #000000;
+
+    --text-link: #66b2ff;
+    --text-link-hover: #3399ff;
+
+    --text-success: #81c784;
+    --text-warning: #ffb74d;
+    --text-error: #ef5350;
+    --text-info: #64b5f6;
+  }
+}
+
 body {
-    background-color: #eee;
+    background-color: var(--color-bg);
 }
 
 .wrapper { 
@@ -9,7 +54,7 @@ body {
 }
 
 .section {
-    max-width: 1200px;
+    max-width: var(--width-page-max);
     width: 100%;
     margin: 0 auto;
 }

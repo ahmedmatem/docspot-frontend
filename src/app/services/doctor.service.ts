@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RegisterModel } from '../auth/register/register.model';
-import { API_ADMIN } from '../constants';
+import { AppConstants } from '../constants';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +19,17 @@ export class DoctorService {
     };
 
     try{
-      const res = await fetch(API_ADMIN.REGISTER_DOCTOR, requestInit)
+      const response = await firstValueFrom(
+        this.http.post(AppConstants.API_ENDPOINTS.ADMIN.REGISTER_DOCTOR, doctor)
+      );
+      console.log(response);
 
-      if(!res.ok){
-        throw new Error('Registration failed.');
-      }
-      console.log('Registration complete successfuly.');
+      // const res = await fetch(AppConstants.API_ENDPOINTS.ADMIN.REGISTER_DOCTOR, requestInit)
+
+      // if(!res.ok){
+      //   throw new Error('Registration failed.');
+      // }
+      console.log('Registration complete successfuly.', response);
       
     } catch(error: any){
       console.log('Registration error:', error);

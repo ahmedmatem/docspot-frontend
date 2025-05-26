@@ -28,9 +28,13 @@ export class LoginComponent {
         const tokenFriendly: JwtPayLoadFriendly | null = decodeToken(res.token);
         const role = tokenFriendly?.role;
 
+        console.log(`User role: ${role}`)
         if(role == 'Admin'){
           this.router.navigate(['/admin/']);
           console.log(`User logged in as Admin ...)`);
+        } else if(role == "Doctor") {
+          this.router.navigate(['/admin/']);
+          console.log(`User logged in as Doctor ...)`);
         } else {
           // some other roles ...
           console.log(`User logged in as other role ...)`);

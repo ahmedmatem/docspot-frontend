@@ -1,3 +1,7 @@
+app-header {
+    background-color: var(--color-primary);
+}
+
 .main {
-    padding: 1rem;
+    /* padding: 1rem; */
 }
