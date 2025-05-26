@@ -3,10 +3,11 @@ import { RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AuthUser } from '../auth/auth.types';
 import { AppConstants } from '../constants';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  imports: [RouterLink,NgTemplateOutlet],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

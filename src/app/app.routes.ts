@@ -5,6 +5,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { DoctorsComponent } from './pages/admin/doctors/doctors.component';
 import { AppointmentsComponent } from './pages/admin/appointments/appointments.component';
+import { RoleGuard } from './guards/role.guard';
+import { AppConstants } from './constants';
 
 export const routes: Routes = [
     {
@@ -24,10 +26,15 @@ export const routes: Routes = [
     },
     {
         path: 'admin',
+        canActivate: [RoleGuard],
+        data: {roles: [AppConstants.ROLES.ADMIN]},
         children: [
             { path: '', component: DashboardComponent },
             { path: 'appointments', component: AppointmentsComponent },
             { path: 'doctors', component: DoctorsComponent }
         ]
-    }
+    },
+    // {
+    //     path: 'doctor'
+    // }
 ];

@@ -10,21 +10,11 @@
         <ul class="main-menu">
             @if(isLoggedIn()){
                 @if(user()?.role == roles.ADMIN){
-                    <li>
-                        <a routerLink="/register">
-                            <i class="fa-solid fa-house"></i> Начало
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/admin/appointments">
-                            <i class="fa-solid fa-stethoscope"></i> Прегледи
-                        </a>
-                    </li><li>
-                        <a routerLink="/admin/doctors">
-                            <i class="fa-solid fa-user-doctor"></i> Доктори
-                        </a>
-                    </li>
-                }                
+                    <ng-container [ngTemplateOutlet]="adminMenu"></ng-container>
+                }
+                @else if (user()?.role == roles.DOCTOR) {
+                    <ng-container [ngTemplateOutlet]="doctorMenu"></ng-container>
+                }              
             }
         </ul>
         <ul class="right-menu">
@@ -36,7 +26,7 @@
                     </a>
                 </li>
             } @else {
-                <span>Здравей, {{ user()?.name }}!</span>
+                <li><a [routerLink]=[]>Здравей, {{ user()?.name }}!</a></li>
                 <li>
                     <a href="#" (click)="logout()">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Изход
@@ -47,3 +37,36 @@
         </ul>
     </nav>
 </header>
+
+<!-- Admin menu template -->
+<ng-template #adminMenu>
+    <li>
+        <a routerLink="/register">
+            <i class="fa-solid fa-house"></i> Начало
+        </a>
+    </li>
+    <li>
+        <a routerLink="/admin/appointments">
+            <i class="fa-solid fa-stethoscope"></i> Прегледи
+        </a>
+    </li>
+    <li>
+        <a routerLink="/admin/doctors">
+            <i class="fa-solid fa-user-doctor"></i> Доктори
+        </a>
+    </li>
+</ng-template>
+
+<!-- Doctor menu template -->
+<ng-template #doctorMenu>
+    <li>
+        <a routerLink="/register">
+            <i class="fa-solid fa-house"></i> Начало
+        </a>
+    </li>
+    <li>
+        <a routerLink="/admin/appointments">
+            <i class="fa-solid fa-stethoscope"></i> Прегледи
+        </a>
+    </li>
+</ng-template>
