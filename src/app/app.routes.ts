@@ -9,6 +9,7 @@ import { AppointmentsComponent } from './pages/admin/appointments/appointments.c
 import { RoleGuard } from './guards/role.guard';
 import { AppConstants } from './constants';
 import { AccessDeniedComponent } from './pages/shared/access-denied/access-denied.component';
+import { ScheduleComponent } from './pages/doctor/schedule/schedule.component';
 
 export const routes: Routes = [
     {
@@ -42,8 +43,8 @@ export const routes: Routes = [
         canActivateChild: [RoleGuard],
         data: {roles: [AppConstants.ROLES.DOCTOR]},
         children: [
-            {path: '', component: DoctorHome }
-            //...
+            {path: '', component: DoctorHome },
+            {path: 'schedule', component: ScheduleComponent}
         ]
     },
     {
