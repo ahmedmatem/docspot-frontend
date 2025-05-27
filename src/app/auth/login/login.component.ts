@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { JwtPayLoadFriendly, LoginRequest } from '../auth.types';
 import { decodeToken } from '../token.utils';
+import { AppConstants } from '../../constants';
 
 @Component({
   selector: 'app-login',
@@ -29,18 +30,15 @@ export class LoginComponent {
         const role = tokenFriendly?.role;
 
         console.log(`User role: ${role}`)
-        if(role == 'Admin'){
-          this.router.navigate(['/admin/']);
-          console.log(`User logged in as Admin ...)`);
-        } else if(role == "Doctor") {
-          this.router.navigate(['/admin/']);
-          console.log(`User logged in as Doctor ...)`);
+        if(role == AppConstants.ROLES.ADMIN){
+          this.router.navigate(['admin']);
+        } else if(role == AppConstants.ROLES.DOCTOR) {
+          this.router.navigate(['doctor']);
         } else {
           // some other roles ...
           console.log(`User logged in as other role ...)`);
         }
         
-        this.router.navigate(['/admin/']);
       } catch(err: any){
         this.loginError = 'Невалиден имейл или парола.';
         console.error(err.message); // 'Login failed:'
