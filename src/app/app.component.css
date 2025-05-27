@@ -3,5 +3,10 @@ app-header {
 }
 
 .main {
-    /* padding: 1rem; */
+    padding: 1em 1.5em;
+}
+
+app-footer {
+    color: var(--bs-gray-800);
+    background-color: var(--bs-gray-100);
 }
