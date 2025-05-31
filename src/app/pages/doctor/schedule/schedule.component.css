@@ -6,11 +6,14 @@
     box-shadow: 0 0 0.2em rgb(0, 0, 0, 0.2);
 }
 
-.sch-mode-switch {
+.sch-page-title {
     display: flex;
-    /* justify-content: end; */
-    padding-bottom: 0.2em;
-}
+    gap: 0.2em;
+    align-items: baseline;
+} 
+    .sch-page-title .title-text {
+        flex-grow: 1;
+    }
 
 .sch-nav {
     display: flex;
