@@ -34,3 +34,5 @@ export const AppConstants = {
         AUTH_USER: 'authUser',
     }
 };
+
+export const CalendarViewMode = { 'WEEK': 'week', 'MONTH': 'month'};

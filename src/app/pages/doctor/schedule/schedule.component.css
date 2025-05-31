@@ -1,53 +1,9 @@
-.sch-container {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 0.3em;
-    box-shadow: 0 0 0.2em rgb(0, 0, 0, 0.2);
-}
-
 .sch-page-title {
     display: flex;
     gap: 0.2em;
     align-items: baseline;
+    margin-bottom: 0.1em;
 } 
     .sch-page-title .title-text {
         flex-grow: 1;
     }
-
-.sch-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1em 1em 0.5em;
-}
-
-.sch-days {
-    display: flex;
-    text-align: center;
-    padding: 0.5em 0;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-left: 0;
-    border-right: 0;
-}
-
-.sch-content {
-    display: flex;
-    /* padding: 0.5em 1em 0.5em;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-left: 0;
-    border-right: 0; */
-
-    /* content: '';
-    width: 100%;
-    height: 40px;
-    background-color: brown; */
-}
-
-.sch-footer {
-    padding: 0.5em 0;
-}
-
-.col.weekend-title {
-    color: var(--color-danger);
-}
