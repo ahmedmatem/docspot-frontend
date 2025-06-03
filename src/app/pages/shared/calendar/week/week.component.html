@@ -2,7 +2,7 @@
 <div class="cal-container">
     <div class="cal-nav">
         <div><i class="fa-solid fa-angle-left"></i></div>
-        <div class="text-center">Април 2024</div>
+        <div class="text-center">{{ month + " " + year }}</div>
         <div class="text-end"><i class="fa-solid fa-angle-right"></i></div>
     </div>
 
@@ -17,32 +17,11 @@
     </div>
 
     <div class="cal-content text-center">
-        <div class="col">
+        @for (date of weekDates; track $index) {
             <div class="col card border-success m-1" style="max-height: 8rem;">
-            <div class="card-header">21</div>
-            <!-- <div class="card-body text-primary">
-                <p class="card-text">Some content</p>
-            </div> -->
-        </div>
-        </div>
-        <div class="col card border-success m-1" style="max-height: 8rem;">
-            <div class="card-header">22</div>
-        </div>
-        <div class="col card border-success m-1" style="max-height: 8rem;">
-            <div class="card-header">23</div>
-        </div>
-        <div class="col card border-success m-1" style="max-height: 8rem;">
-            <div class="card-header">24</div>
-        </div>
-        <div class="col card border-success m-1" style="max-height: 8rem;">
-            <div class="card-header">25</div>
-        </div>
-        <div class="col card border-success m-1" style="max-height: 8rem;">
-            <div class="card-header">26</div>
-        </div>
-        <div class="col card border-success m-1" style="max-height: 8rem;">
-            <div class="card-header">27</div>
-        </div>
+                <div class="card-header">{{ date.getDate() }}</div>
+            </div>
+        }
     </div>
 
     <!-- <div class="cal-footer">

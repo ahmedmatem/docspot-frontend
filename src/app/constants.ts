@@ -1,3 +1,5 @@
+import { InjectionToken } from "@angular/core";
+
 const BASE_URL = 'https://localhost:7168/api';
 
 // export const API_AUTH = {
@@ -36,3 +38,19 @@ export const AppConstants = {
 };
 
 export const CalendarViewMode = { 'WEEK': 'week', 'MONTH': 'month'};
+export const CALENDAR_VIEW_MODE_TOKEN = new InjectionToken<string>(CalendarViewMode.WEEK);
+
+export const MONTH_NAMES: readonly string[] = [
+    'Януари',
+    'Февруари',
+    'Март',
+    'Април',
+    'Май',
+    'Юни',
+    'Юли',
+    'Август',
+    'Септември',
+    'Октомври',
+    'Ноември',
+    'Декември'
+];
