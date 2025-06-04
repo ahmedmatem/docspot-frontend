@@ -31,5 +31,5 @@
 }
 
 .col.weekend-title {
-    color: var(--color-danger);
+    color: var(--text-muted);
 }

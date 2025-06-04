@@ -19,10 +19,6 @@ export class CalendarService {
     return this.generateDays(start, this.DAYS_IN_WEEK);
   }
 
-  // getPrevWeek(date = new Date()): Date[] {
-
-  // }
-
   getMonthNameBy(index: number): string {
     return MONTH_NAMES[index] ?? 'Unknown';
   }

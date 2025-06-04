@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CalendarService } from '../../../../services/calendar.service';
 
 @Component({
   selector: 'app-month',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './month.component.css'
 })
 export class MonthComponent {
+  monthDays: Date[] | undefined;
+
+  constructor(private calendarService: CalendarService) {}
+
+
 
 }
