@@ -20,7 +20,7 @@ export class WeekComponent {
 
     this.setWeekInfo(this.weekStartDate);
 
-    console.log(this.weekDates[0].getMonth());
+    console.log(this.calendarService.getMonth());
   }
 
   nextWeek() {

@@ -13,10 +13,23 @@ export class CalendarService {
 
   constructor() { }
 
-  getWeek(date = new Date()): Date[] {
+  getWeek(date: Date = new Date()): Date[] {
     const start = this.getStartOfWeek(date);
     this.weekStartDate = start;
     return this.generateDays(start, this.DAYS_IN_WEEK);
+  }
+
+  getMonth(date: Date = new Date()): Date[]{
+    const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+    this.monthStartDate = new Date(firstDayOfMonth);
+
+    // Step 1: Find Monday before or on the first of the month
+    const startDay = new Date(firstDayOfMonth);
+    const dayOfWeek = startDay.getDay() === 0 ? 7 : startDay.getDay(); // Sunday (0) → 7
+    startDay.setDate(startDay.getDate() - (dayOfWeek - 1));
+
+    // Step 2: Generate 6 weeks = 42 days
+    return this.generateDays(startDay, 6 * this.DAYS_IN_WEEK); // 42 days
   }
 
   getMonthNameBy(index: number): string {
