@@ -30,7 +30,15 @@ export class CalendarService {
     startDay.setDate(startDay.getDate() - (dayOfWeek - 1));
 
     // Step 2: Generate 6 weeks = 42 days
-    return this.generateDays(startDay, 6 * this.DAYS_IN_WEEK); // 42 days
+    const monthGridDays = this.generateDays(startDay, 6 * this.DAYS_IN_WEEK); // 42 days
+    if(monthGridDays[0].getDate() == 1){ // remove last 7 days of month grid days
+      monthGridDays.splice(monthGridDays.length - 7);
+    }
+    if(monthGridDays[monthGridDays.length - 7].getMonth() != date.getMonth()){ // remove last 7 days of month grid days
+      monthGridDays.splice(monthGridDays.length - 7);
+    }
+
+    return monthGridDays;
   }
 
   getMonthNameBy(index: number): string {

@@ -19,14 +19,19 @@
         <div class="cal-content text-center">
             @for (day of week; track $index) {
                 @if (day.getMonth() != monthInfo?.monthIndex) {
-                    <div class="col card m-1 disabled" style="max-height: 8rem;">
+                    <!-- out of month days -->
+                    <div class="col card m-1 disabled text-secondary" style="max-height: 8rem;">
+                        <div class="card-header">{{ day.getDate() }}</div>
+                    </div>
+                } @else if(day < today) {
+                    <div class="col card disabled passed m-1" style="max-height: 8rem;">
                         <div class="card-header">{{ day.getDate() }}</div>
                     </div>
                 } @else {
                     <div class="col card bg-danger text-light m-1" style="max-height: 8rem;">
                         <div class="card-header">{{ day.getDate() }}</div>
                     </div>
-                }                
+                }               
             }
         </div>
     }

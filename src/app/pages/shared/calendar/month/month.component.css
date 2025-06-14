@@ -38,6 +38,10 @@
     cursor: auto;
 }
 
+.passed {
+    border: 1px solid var(--bs-gray-700);
+}
+
 .card {    
     cursor: pointer;
 }

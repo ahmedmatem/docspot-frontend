@@ -13,6 +13,7 @@ export class MonthComponent {
   monthStartDate: Date | undefined;
 
   monthInfo: MonthInfo | undefined;
+  today: Date = new Date();
 
   constructor(private calendarService: CalendarService) {
     this.monthDays = this.calendarService.getMonth();
