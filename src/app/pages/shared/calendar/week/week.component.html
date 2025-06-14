@@ -1,7 +1,7 @@
 <div class="cal-container">
     <div class="cal-nav">
         <div><a routerLink="#" (click)="prevWeek()"><i class="fa-solid fa-angle-left"></i></a></div>
-        <div class="text-center">{{ month + " " + year }}</div>
+        <div class="text-center">{{ monthInfo?.shortLabel }}</div>
         <div class="text-end"><a routerLink="#" (click)="nextWeek()"><i class="fa-solid fa-angle-right"></i></a></div>
     </div>
 

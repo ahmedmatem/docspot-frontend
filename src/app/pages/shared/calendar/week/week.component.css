@@ -33,3 +33,7 @@
 .col.weekend-title {
     color: var(--text-muted);
 }
+
+.card {    
+    cursor: pointer;
+}

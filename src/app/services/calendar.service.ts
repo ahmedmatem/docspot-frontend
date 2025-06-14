@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { CALENDAR_VIEW_MODE_TOKEN, MONTH_NAMES } from '../constants';
 import { CalendarViewMode } from '../constants';
+import { MonthInfo } from '../pages/shared/calendar/models/month-info.model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,15 @@ export class CalendarService {
 
   getShortYearFrom(date: Date): number {
     return date.getFullYear() % 100; // e.g. 2025 --> 25
+  }
+
+  getMonthInfo(date: Date = new Date()): MonthInfo {
+    const year = this.getFullYearFrom(date);
+    const monthIndex = date.getMonth();
+    const month = this.getMonthNameBy(monthIndex);
+    const label = month + "'" + year;
+    const shortLabel = month + "'" + year % 100;
+    return { month, monthIndex, year, label, shortLabel };
   }
 
   // --- Helpers ---

@@ -33,3 +33,11 @@
 .col.weekend-title {
     color: var(--color-danger);
 }
+
+.card.disabled {
+    cursor: auto;
+}
+
+.card {    
+    cursor: pointer;
+}
